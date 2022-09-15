@@ -1,7 +1,7 @@
 0x03. C - Debugging
 
-finding and fixing errors
-task 1
-task 2
-task 3
-task 0
+By: Carrie Ybay
+
+Project will start Sep 13, 2022 6:00 AM, must end by Sep 16, 2022 6:00 AM
+
+An auto review will be launched at the deadline
