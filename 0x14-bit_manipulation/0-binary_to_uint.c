@@ -1,69 +1,78 @@
 #include "main.h"
-/**
- * _pow - function that return the
- * value of x raised to the power of y
- *
- * @x: parameter to base
- * @y: parameter of pow
- *
- * Return: End program
- */
-int _pow(int x, int y)
-{
-	if (y < 0)
-	{
-		return (-1);
-	}
-	else if (y == 0)
-	{
-		return (1);
-	}
-	else
-	{
-		y--;
-		x = x * _pow(x, y);
-		return (x);
-	}
 
-	return (0);
-}
 /**
- * binary_to_uint - function that converts a binary number to an
- * unsigned int
+ * _atoi - converts chars to integer
  *
- * @b: Pointer with the string whit the number to convert
+ * @c: char to convert
  *
- * Return: The number converted
- */
+ * Return: converted integer
+*/
+unsigned int _atoi(char c)
+{
+	return ((unsigned int) c - '0');
+}
+
+/**
+ * _strlen - gets the length of a string
+ *
+ * @str: string input
+ *
+ * Return: string length
+*/
+unsigned int _strlen(const char *str)
+{
+	unsigned int index = 0;
+
+	while (str[index] != '\0')
+		index++;
+	return (index);
+}
+
+/**
+ * binary_to_uint - a function that converts a binary number
+ *                  to an unsigned int
+ *
+ * @b: string that contains 0 and 1 characters
+ *
+ * Return: the number converted or 0
+ *         if @b contains a character
+ *         that is not 0 or 1 or when
+ *         @b is null
+*/
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int sum = 0;
-	int i, x, n;
+	int index;
+	unsigned int result = 0, base2 = 1,  num = 0;
 
+	/*if b is NULL return 0*/
 	if (b == NULL)
-	{
 		return (0);
-	}
 
-	n = strlen(b) - 1;
+	#ifdef DEBUG /*print debug statement*/
+	printf("String is %s, and length is %u.\n", b, _strlen(b));
+	#endif
 
-	/* Realizamos la operacion para hallar suma */
-	for (x = 0, i = 0; n >= x; n--)
+	/*iterate through string*/
+	for (index = _strlen(b) - 1; index >= 0; index--)
 	{
-		switch (b[i])
-		{
-			case '1':
-				sum = sum + _pow(2, n);
-				i++;
-				break;
-			case '0':
-				sum = sum + 0;
-				i++;
-				break;
-			default:
-				return (0);
-		}
+		num = _atoi(b[index]); /*convert char to number*/
+
+		#ifdef DEBUG /*print debug statements*/
+		printf("Number is %u, index is %i and base is %u.\n\n", num, index, base2);
+		#endif
+
+		/*if number is not 0 or 1 return 0*/
+		if (num != 0 && num != 1)
+			return (0);
+
+		result += num * base2; /*enable debug to see it in action*/
+		base2 *= 2;
+
+		#ifdef DEBUG /*print debug statements*/
+		printf("Result is %u.\n", result);
+		#endif
 	}
 
-	return (sum);
+	return (result);
+
 }
