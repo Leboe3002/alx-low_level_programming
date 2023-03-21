@@ -1,5 +1,2 @@
-## 0x18. C - Dynamic libraries
-
-Project will start Dec 12, 2022 6:00 AM, must end by Dec 13, 2022 6:00 AM
- was released at Dec 12, 2022 12:00 PM
- An auto review will be launched at the deadline
+# 0x18-dynamic_libraries
+In this project, I learnt how to create dynamic libraries from modules and use them
